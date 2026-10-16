@@ -1,0 +1,74 @@
+{
+  "format": "sac-mock-exam-paper",
+  "format_version": "1.0",
+  "paper": {
+    "name": "格式演示卷（示例，非考试内容）",
+    "subject": "金融市场基础知识",
+    "duration_minutes": 30,
+    "total_score": 4.5,
+    "question_count": 5,
+    "notes": "本文件仅用于演示 sac-mock-exam-paper 导入格式，题目为本项目编写的示例，可通过「题库管理 → 整卷导入」直接导入体验。"
+  },
+  "questions": [
+    {
+      "no": 1,
+      "type": "单选题",
+      "case_material": null,
+      "stem": "下列金融工具中，通常属于货币市场工具的是（　）。【格式演示，非考试内容】",
+      "options": ["A.国库券", "B.普通股股票", "C.十年期公司债券", "D.开放式股票基金"],
+      "answer": "A",
+      "analysis": "货币市场工具指剩余期限在一年以内（含一年）的金融工具，如国库券、商业票据、大额存单等；股票、中长期债券与股票型基金属于资本市场范畴。",
+      "score": 0.5,
+      "chapter": null,
+      "images": { "stem": [], "options": {}, "analysis": [] }
+    },
+    {
+      "no": 2,
+      "type": "多选题",
+      "case_material": null,
+      "stem": "下列关于股票与债券区别的说法，正确的有（　）。【格式演示，非考试内容】",
+      "options": ["A.股票体现的是所有权关系", "B.债券体现的是债权债务关系", "C.股票一般都有固定的到期期限", "D.债券的利率通常相对固定"],
+      "answer": "ABD",
+      "analysis": "股票是所有权凭证、无固定期限；债券是债权债务凭证、通常有约定利率与期限。",
+      "score": 1,
+      "chapter": null,
+      "images": { "stem": [], "options": {}, "analysis": [] }
+    },
+    {
+      "no": 3,
+      "type": "判断题",
+      "case_material": null,
+      "stem": "债券是一种债权债务凭证，持有人有权按约定收取利息并在到期时收回本金。【格式演示，非考试内容】",
+      "options": ["A.正确", "B.错误"],
+      "answer": "A",
+      "analysis": "该表述符合债券的基本法律属性。",
+      "score": 1,
+      "chapter": null,
+      "images": { "stem": [], "options": {}, "analysis": [] }
+    },
+    {
+      "no": 4,
+      "type": "综合题",
+      "case_material": "【案例材料】\n某投资者以自有资金 20 万元，按 10 元/股的价格买入某上市公司股票 2 万股，并计划持有一年。根据此背景回答下列问题。",
+      "stem": "（1）该投资者采用的交易方式属于（　）。【格式演示，非考试内容】",
+      "options": ["A.现货交易", "B.期货交易", "C.信用交易（融资买入）", "D.期权交易"],
+      "answer": "A",
+      "analysis": "以自有资金全额买入现券并持有，属于现货交易；未借入资金或使用衍生工具。",
+      "score": 1,
+      "chapter": null,
+      "images": { "stem": [], "options": {}, "analysis": [] }
+    },
+    {
+      "no": 5,
+      "type": "综合题",
+      "case_material": "【案例材料】\n某投资者以自有资金 20 万元，按 10 元/股的价格买入某上市公司股票 2 万股，并计划持有一年。根据此背景回答下列问题。",
+      "stem": "（2）若股价跌至 8 元/股且不考虑交易费用，该投资者的浮动盈亏为（　）。【格式演示，非考试内容】",
+      "options": ["A.盈利 2 万元", "B.亏损 2 万元", "C.盈利 4 万元", "D.亏损 4 万元"],
+      "answer": "D",
+      "analysis": "浮动盈亏＝（8－10）×2 万股＝－4 万元，即亏损 4 万元。",
+      "score": 1,
+      "chapter": null,
+      "images": { "stem": [], "options": {}, "analysis": [] }
+    }
+  ]
+}

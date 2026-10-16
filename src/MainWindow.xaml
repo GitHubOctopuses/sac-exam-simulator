@@ -1,0 +1,10 @@
+<Window x:Class="SacExam.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="证券从业模拟考试系统（模拟练习用途 · 非官方软件）"
+        Width="1366" Height="768" MinWidth="1200" MinHeight="720"
+        WindowState="Maximized" Background="#F5F7FA">
+    <Grid>
+        <ContentControl x:Name="Host"/>
+    </Grid>
+</Window>

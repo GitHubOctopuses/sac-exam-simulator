@@ -1,0 +1,175 @@
+<Application x:Class="SacExam.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            >
+    <Application.Resources>
+
+        <!-- ======== 全局色板（说明书 §7.3 协会机考风格） ======== -->
+        <SolidColorBrush x:Key="BrushDeepBlue"   Color="#1F4E92"/>
+        <SolidColorBrush x:Key="BrushDeepBlueDk" Color="#173A6E"/>
+        <SolidColorBrush x:Key="BrushAuxBlue"    Color="#2F6FED"/>
+        <SolidColorBrush x:Key="BrushAuxBlueLt"  Color="#EAF2FF"/>
+        <SolidColorBrush x:Key="BrushChipBlue"   Color="#BDD7EE"/>
+        <SolidColorBrush x:Key="BrushOrange"     Color="#F59A23"/>
+        <SolidColorBrush x:Key="BrushOrangeDk"   Color="#DD8310"/>
+        <SolidColorBrush x:Key="BrushRed"        Color="#E34040"/>
+        <SolidColorBrush x:Key="BrushGreen"      Color="#22A45D"/>
+        <SolidColorBrush x:Key="BrushMarkOrange" Color="#F59E0B"/>
+        <SolidColorBrush x:Key="BrushPageBg"     Color="#F5F7FA"/>
+        <SolidColorBrush x:Key="BrushCardBg"     Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="BrushLine"       Color="#E3E8F0"/>
+        <SolidColorBrush x:Key="BrushTextMain"   Color="#222B3A"/>
+        <SolidColorBrush x:Key="BrushTextSub"    Color="#7A8699"/>
+
+        <!-- ======== 全局字体 ======== -->
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#222B3A"/>
+            <Setter Property="Background" Value="#F5F7FA"/>
+        </Style>
+        <Style TargetType="UserControl">
+            <Setter Property="FontFamily" Value="Microsoft YaHei UI"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#222B3A"/>
+            <Setter Property="Background" Value="#F5F7FA"/>
+        </Style>
+
+        <!-- ======== 按钮样式 ======== -->
+        <Style x:Key="BtnBase" TargetType="Button">
+            <Setter Property="Padding" Value="18,8"/>
+            <Setter Property="FontSize" Value="13.5"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="bd" Background="{TemplateBinding Background}"
+                                CornerRadius="3" BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.88"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.75"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="bd" Property="Opacity" Value="0.45"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BtnPrimary" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+            <Setter Property="Background" Value="#2F6FED"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="BtnOrange" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+            <Setter Property="Background" Value="#F59A23"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="BtnDanger" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+            <Setter Property="Background" Value="#E34040"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="BtnGreen" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+            <Setter Property="Background" Value="#22A45D"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="BtnGhost" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="Foreground" Value="#44506B"/>
+            <Setter Property="BorderBrush" Value="#C9D3E4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style x:Key="BtnOrangeLine" TargetType="Button" BasedOn="{StaticResource BtnBase}">
+            <Setter Property="Background" Value="#FFFFFF"/>
+            <Setter Property="Foreground" Value="#E88A10"/>
+            <Setter Property="BorderBrush" Value="#F59A23"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <!-- ======== 深蓝页头条 ======== -->
+        <Style x:Key="TopBar" TargetType="Border">
+            <Setter Property="Background" Value="#1F4E92"/>
+            <Setter Property="Height" Value="64"/>
+            <Setter Property="Padding" Value="24,0"/>
+        </Style>
+
+        <!-- ======== 内容卡 ======== -->
+        <Style x:Key="Card" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E3E8F0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Padding" Value="24"/>
+        </Style>
+
+        <!-- ======== 表格 ======== -->
+        <Style TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#E3E8F0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="RowHeight" Value="34"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="HorizontalGridLinesBrush" Value="#EEF1F6"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="FontSize" Value="12.5"/>
+        </Style>
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#1F4E92"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="12.5"/>
+            <Setter Property="Padding" Value="10,7"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="DataGridRow">
+            <Setter Property="Background" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="AlternationIndex" Value="1">
+                    <Setter Property="Background" Value="#F7FAFD"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#EAF2FF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- ======== 输入（使用 WPF 默认模板，仅做配色，避免自定义模板的文本排版问题） ======== -->
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="8,7"/>
+            <Setter Property="BorderBrush" Value="#C9D3E4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+                <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="MinHeight" Value="34"/>
+        </Style>
+
+        <!-- ======== 文本 ======== -->
+        <Style x:Key="TSub" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#7A8699"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+    </Application.Resources>
+</Application>
