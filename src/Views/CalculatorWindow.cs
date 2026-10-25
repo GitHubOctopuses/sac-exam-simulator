@@ -140,8 +140,7 @@ public class CalculatorWindow : Window
         Put(grid, "或", 4, 4, () => InsertToken("|"));
         Put(grid, "非", 4, 5, () => InsertToken("~"));
         Put(grid, "左移", 4, 6, () => InsertToken("<<"));
-        Put(grid, "xor", 5, 2, () => InsertToken("xor"));
-        Put(grid, "<<", 5, 3, () => InsertToken("<<"));
+        Put(grid, "xor", 5, 3, () => InsertToken("xor"));
         var eq = Put(grid, "=", 5, 4, Evaluate, "primary");
         Grid.SetColumnSpan(eq, 3);
 

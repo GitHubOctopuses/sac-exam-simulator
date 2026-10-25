@@ -150,7 +150,6 @@ public class ExamResultDto
     public double TotalScore;
     public double GotScore;
     public bool Pass;
-    public int AnsweredCount;
     public int QuestionCount;
     public int CorrectCount;
     public double UsedSeconds;

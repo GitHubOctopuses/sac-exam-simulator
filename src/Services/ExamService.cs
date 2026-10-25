@@ -402,8 +402,27 @@ public static class ExamService
         return list;
     }
 
-    public static void DeleteHistory(long recordId) =>
+    public static void DeleteHistory(long recordId)
+    {
+        long? paperId = Db.Scalar<long?>("SELECT paper_id FROM exam_records WHERE id=@r", ("@r", recordId));
         Db.Exec("DELETE FROM exam_records WHERE id=@r", ("@r", recordId));
+        // 随机卷/错题重做卷的最后一条历史被删除后，卷记录一并清理（不残留孤儿 papers）
+        if (paperId.HasValue &&
+            Db.Scalar<long>("SELECT COUNT(*) FROM exam_records WHERE paper_id=@p", ("@p", paperId.Value)) == 0 &&
+            Db.Scalar<long>("SELECT COUNT(*) FROM papers WHERE id=@p AND source='random'", ("@p", paperId.Value)) > 0)
+        {
+            Db.DeletePaper(paperId.Value);
+        }
+    }
+
+    /// <summary>启动清理：删除没有进行中/已完成考试的随机卷（连同其弃考记录），保留有可回看历史的卷。</summary>
+    public static void CleanupOrphanRandomPapers()
+    {
+        var orphans = Db.Rows(@"SELECT id FROM papers p WHERE p.source='random'
+                                AND NOT EXISTS (SELECT 1 FROM exam_records r
+                                                WHERE r.paper_id = p.id AND r.status IN ('ongoing','finished'))");
+        foreach (var r in orphans) Db.DeletePaper((long)r["id"]);
+    }
 
     /// <summary>从历史记录装载已完成的答题明细（解析回放用）。</summary>
     public static ExamResultDto LoadFinished(long recordId)
@@ -429,7 +448,6 @@ public static class ExamService
             st.Correct = a["correct"] != null && Convert.ToInt64(a["correct"]) == 1;
             st.GotScore = a["score"] == null ? 0 : Convert.ToDouble(a["score"]);
         }
-        int durationMin = snap?.DurationMinutes ?? 120;
         return new ExamResultDto
         {
             RecordId = recordId,

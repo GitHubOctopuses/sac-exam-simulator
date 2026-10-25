@@ -39,6 +39,7 @@ public partial class App : Application
         Directory.CreateDirectory(ImageDir);
 
         Db.Init();
+        try { Services.ExamService.CleanupOrphanRandomPapers(); } catch { /* 清理失败不影响启动 */ }
 
         if (seed)
         {

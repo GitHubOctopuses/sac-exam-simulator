@@ -38,7 +38,7 @@ public static class ExportService
             row.CreateCell(1).SetCellValue(stem);
             for (int i = 0; i < 4; i++)
                 row.CreateCell(2 + i).SetCellValue(i < q.Options.Count ? q.Options[i].Label + "、" + q.Options[i].Content : "");
-            row.CreateCell(6).SetCellValue(q.QType == "判断题" ? q.Answer : q.Answer);
+            row.CreateCell(6).SetCellValue(q.Answer);
             row.CreateCell(7).SetCellValue(q.Analysis ?? "");
             row.CreateCell(8).SetCellValue(q.Score);
 

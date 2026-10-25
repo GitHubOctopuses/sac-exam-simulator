@@ -205,7 +205,7 @@ public class SettingsPage : UserControl
                 s.RecoveryPrompt = _recovery.IsChecked == true;
                 s.RememberFullscreen = _fullscreen.IsChecked == true;
                 s.NoticeText = _noticeBox.Text;
-                s.CaseSplitMarkers = _markersBox.Text.Split('\n').Select(x => x.Trim().TrimEnd('。') + (x.Trim().EndsWith("。") ? "" : "。")).Where(x => x.Length > 1).ToList();
+                s.CaseSplitMarkers = _markersBox.Text.Split('\n').Select(x => x.Trim()).Where(x => x.Length > 1).Select(x => x.EndsWith("。") ? x : x + "。").ToList();
                 foreach (var (preset, cnt, sco) in _presetBoxes)
                 {
                     if (int.TryParse(cnt.Text.Trim(), out var c) && c >= 0) preset.Count = c;
